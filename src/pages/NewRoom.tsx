@@ -9,6 +9,7 @@ import { db, ref } from "../services/firebase";
 import { useRouter } from "next/router";
 import { push } from "firebase/database";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function NewRoom() {
   const { user } = useAuth();
@@ -42,7 +43,7 @@ export default function NewRoom() {
   return (
     <div id="page-auth">
       <aside>
-        <img
+        <Image
           src={illustrationImg}
           alt="Ilustração simbolizando perguntas e respostas"
         />
@@ -51,7 +52,7 @@ export default function NewRoom() {
       </aside>
       <main>
         <div className="main-content">
-          <img src={logoImg} alt="Letmeask" />
+          <Image src={logoImg} alt="Letmeask" />
           <h2>Criar uma nova sala</h2>
           <form onSubmit={handleCreateRoom}>
             <input

@@ -46,9 +46,11 @@ export function useRoom(roomId: string) {
     onValue(roomRef, (snapshot) => {
       const databaseRoom = snapshot.val();
 
-      console.log("databaseRoom", databaseRoom);
+      // console.log("databaseRoom", databaseRoom);
       const firebaseQuestions: FirebaseQuestions =
         databaseRoom?.questions ?? {};
+
+      console.log("firebaseQuestions", firebaseQuestions);
 
       // transformar um Objeto em Array
       const parsedQuestion = Object.entries(firebaseQuestions).map(
@@ -66,6 +68,8 @@ export function useRoom(roomId: string) {
           };
         }
       );
+
+      console.log("parsedQuestion", parsedQuestion);
 
       setTitle(databaseRoom?.title);
       setQuestions(parsedQuestion);

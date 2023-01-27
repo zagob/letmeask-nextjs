@@ -1,5 +1,13 @@
 import { useRoom } from "@/hooks/useRoom";
-import { push, query, ref, remove, set } from "firebase/database";
+import {
+  child,
+  push,
+  query,
+  ref,
+  remove,
+  set,
+  update,
+} from "firebase/database";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
@@ -48,7 +56,19 @@ export default function Room() {
     };
 
     // await database.ref(`rooms/${roomId}/questions`).push(question);
-    set(ref(db, `rooms/${roomId}/questions`), question);
+
+    const newKeyQuestions = push(
+      child(ref(db), `rooms/${roomId}/questions`),
+      question
+    );
+
+    console.log("newKeyQuestions", newKeyQuestions);
+
+    // const updates = {}
+
+    // updates[`/rooms/${roomId}/questions` + newKeyQuestions] = question;
+
+    // update(ref(db), updates)
 
     setNewQuestion("");
   }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import copyImg from "../assets/images/copy.svg";
 
 type RoomCodeProps = {
@@ -12,7 +13,7 @@ export function RoomCode(props: RoomCodeProps) {
   return (
     <button className="room-code" onClick={copyRoomCodeToClipboard}>
       <div>
-        <img src={copyImg} alt="Copy room code" />
+        <Image src={copyImg} alt="Copy room code" />
       </div>
       <span>Sala #{props.code}</span>
     </button>

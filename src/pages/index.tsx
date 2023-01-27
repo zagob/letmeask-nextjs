@@ -29,7 +29,10 @@ export default function Home() {
       return;
     }
 
-    const roomRef = await get(child(ref(db), `users/${roomCode}`));
+    // const roomRef = await get(child(ref(db), `users/${roomCode}`));
+    const roomRef = await get(child(ref(db), `rooms/${roomCode}`));
+
+    // console.log(roomRef.exists());
 
     if (!roomRef.exists()) {
       return alert("Room does not exists.");
@@ -40,7 +43,7 @@ export default function Home() {
       return;
     }
 
-    router.push(`/rooms/${roomCode}`);
+    router.push(`/room/${roomCode}`);
   }
   return (
     <div id="page-auth">
